@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Reflection;
+
 
 namespace OGDCL
 {
@@ -61,5 +64,13 @@ namespace OGDCL
         {
 
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            signup signupForm = new signup();
+            signupForm.Show();
+            
+        }
+
     }
 }
