@@ -74,6 +74,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="impactform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="impactform.Designer.cs">
+      <DependentUpon>impactform.cs</DependentUpon>
+    </Compile>
     <Compile Include="manager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="impactform.resx">
+      <DependentUpon>impactform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="manager.resx">
       <DependentUpon>manager.cs</DependentUpon>
@@ -138,6 +147,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\images.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left %285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification-bell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading-bar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
