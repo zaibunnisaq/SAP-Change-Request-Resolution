@@ -11,7 +11,33 @@ namespace OGDCL
         public signup()
         {
             InitializeComponent();
+            PopulateComboBox();
         }
+
+        private void PopulateComboBox()
+        {
+            comboBox1.Items.Add("SAP FI");
+            comboBox1.Items.Add("SAP CO");
+            comboBox1.Items.Add("SAP FM");
+            comboBox1.Items.Add("SAP JVA");
+            comboBox1.Items.Add("SAP PS");
+            comboBox1.Items.Add("SAP REFX");
+            comboBox1.Items.Add("SAP PM");
+            comboBox1.Items.Add("SAP MM");
+            comboBox1.Items.Add("SAP HCM");
+            comboBox1.Items.Add("SAP SD");
+            comboBox1.Items.Add("SAP MDG");
+            comboBox1.Items.Add("SAP ABAP");
+            comboBox1.Items.Add("SAP BASIS");
+
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0;
+            }
+
+           // comboBox1.SelectedIndex = 0; // This will select the first item by default
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -21,11 +47,11 @@ namespace OGDCL
             string password = textBox2.Text;
             string confirmPassword = textBox3.Text;
             string name = textBox4.Text;
-            string empID = textBox5.Text;
+            string empID = textBox5.Text; // Manually input empID
             string role = "Power User";
-            //string modules = comboBox1.SelectedItem.ToString();
+            string selectedModule = comboBox1.SelectedItem.ToString();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(empID) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
@@ -39,62 +65,65 @@ namespace OGDCL
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // Use only the columns needed for sign-up
-                string query = @"INSERT INTO Employee (empID, emp_name, username, passwd, roleID) 
-                    VALUES (@EmpID, @EmpName, @Username, @Password, 
-                        (SELECT roleID FROM Role WHERE role_name = 'Power User')
-                    )";
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
 
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@EmpID", empID);
-                    command.Parameters.AddWithValue("@EmpName", name);
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password);
-                    command.Parameters.AddWithValue("@role", role);
-                    //command.Parameters.AddWithValue("@Modules", modules);
+                    // Insert into Employee table
+                    string employeeQuery = @"INSERT INTO Employee (empID, emp_name, username, passwd, roleID) 
+                                             VALUES (@EmpID, @EmpName, @Username, @Password, 
+                                                     (SELECT roleID FROM Role WHERE role_name = @RoleName))";
 
-                    try
-                    {
-                        connection.Open();
-                        int result = command.ExecuteNonQuery();
+                    SqlCommand employeeCommand = new SqlCommand(employeeQuery, connection, transaction);
+                    employeeCommand.Parameters.AddWithValue("@EmpID", empID); // Using input empID
+                    employeeCommand.Parameters.AddWithValue("@EmpName", name);
+                    employeeCommand.Parameters.AddWithValue("@Username", username);
+                    employeeCommand.Parameters.AddWithValue("@Password", password);
+                    employeeCommand.Parameters.AddWithValue("@RoleName", role);
 
-                        if (result > 0)
-                        {
-                            MessageBox.Show("Sign up successful!");
-                            admin Admin = new admin();
-                            Admin.Show();
+                    employeeCommand.ExecuteNonQuery();
 
-                        }
-                        else
-                        {
-                            MessageBox.Show("Sign up failed.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error: {ex.Message}");
-                    }
+                    // Insert into EmployeeModule table
+                    string moduleQuery = @"INSERT INTO EmployeeModule (empID, moduleID, roleID)
+                                           VALUES (@EmpID, 
+                                                   (SELECT moduleID FROM Modules WHERE module_name = @SelectedModule),
+                                                   (SELECT roleID FROM Role WHERE role_name = @RoleName))";
 
+                    SqlCommand moduleCommand = new SqlCommand(moduleQuery, connection, transaction);
+                    moduleCommand.Parameters.AddWithValue("@EmpID", empID);
+                    moduleCommand.Parameters.AddWithValue("@SelectedModule", selectedModule);
+                    moduleCommand.Parameters.AddWithValue("@RoleName", role);
+
+                    moduleCommand.ExecuteNonQuery();
+
+                    // Commit the transaction
+                    transaction.Commit();
+
+                    MessageBox.Show("Sign up successful!");
+                    admin Admin = new admin();
+                    Admin.Show();
+                }
+                catch (Exception ex)
+                {
+                    // Rollback the transaction in case of an error
+                    transaction.Rollback();
+                    MessageBox.Show($"Error: {ex.Message}");
                 }
             }
         }
 
 
-       // private void PopulateComboBox()
-        //{
-        //    comboBox1.Items.Add("Finance");
-        //    comboBox1.Items.Add("Security");
-        //    comboBox1.Items.Add("Operations");
 
-        //    // Optionally set the default selected item
-        //    comboBox1.SelectedIndex = 0;
-        //}
+        private void label5_Click(object sender, EventArgs e)
+        {
 
-        //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        //{
+        }
 
-        //}
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
