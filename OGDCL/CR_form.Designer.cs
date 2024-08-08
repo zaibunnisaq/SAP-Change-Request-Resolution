@@ -43,9 +43,17 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::OGDCL.Properties.Resources.OGDCL_logo1;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Location = new System.Drawing.Point(842, 24);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(262, 262);
+            this.panel2.TabIndex = 2;
             // 
             // label3
             // 
@@ -64,6 +72,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(170, 26);
             this.textBox4.TabIndex = 13;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label6
             // 
@@ -150,6 +159,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(568, 64);
             this.richTextBox1.TabIndex = 20;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // richTextBox2
             // 
@@ -158,6 +168,7 @@
             this.richTextBox2.Size = new System.Drawing.Size(568, 64);
             this.richTextBox2.TabIndex = 21;
             this.richTextBox2.Text = "";
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // checkBox1
             // 
@@ -168,6 +179,7 @@
             this.checkBox1.TabIndex = 22;
             this.checkBox1.Text = "Normal";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -186,6 +198,7 @@
             this.richTextBox3.Size = new System.Drawing.Size(568, 64);
             this.richTextBox3.TabIndex = 24;
             this.richTextBox3.Text = "";
+            this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
             // 
             // label8
             // 
@@ -198,31 +211,26 @@
             this.label8.TabIndex = 25;
             this.label8.Text = "(end user)";
             // 
-            // panel2
+            // button1
             // 
-            this.panel2.BackgroundImage = global::OGDCL.Properties.Resources.OGDCL_logo1;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(828, 1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(262, 262);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::OGDCL.Properties.Resources.left__5_;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(12, 578);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(64, 57);
-            this.panel1.TabIndex = 28;
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(881, 634);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 40);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Send request";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CR_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1090, 647);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1131, 686);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.checkBox2);
@@ -241,6 +249,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "CR_form";
             this.Text = "CR_form";
+            this.Load += new System.EventHandler(this.CR_form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,6 +273,6 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
     }
 }
