@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,16 +43,9 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::OGDCL.Properties.Resources.OGDCL_logo1;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(828, 1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(262, 262);
-            this.panel2.TabIndex = 2;
             // 
             // label3
             // 
@@ -206,12 +198,31 @@
             this.label8.TabIndex = 25;
             this.label8.Text = "(end user)";
             // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::OGDCL.Properties.Resources.OGDCL_logo1;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Location = new System.Drawing.Point(828, 1);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(262, 262);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::OGDCL.Properties.Resources.left__5_;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Location = new System.Drawing.Point(12, 578);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(64, 57);
+            this.panel1.TabIndex = 28;
+            // 
             // CR_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1090, 647);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.checkBox2);
@@ -253,5 +264,6 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel1;
     }
 }

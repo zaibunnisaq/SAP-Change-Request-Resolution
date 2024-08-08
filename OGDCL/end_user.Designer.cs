@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::OGDCL.Properties.Resources.left__5_;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Location = new System.Drawing.Point(12, 565);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(64, 57);
+            this.panel1.TabIndex = 29;
             // 
             // end_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1088, 634);
+            this.Controls.Add(this.panel1);
             this.Name = "end_user";
             this.Text = "end_user";
             this.ResumeLayout(false);
@@ -42,5 +54,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panel1;
     }
 }

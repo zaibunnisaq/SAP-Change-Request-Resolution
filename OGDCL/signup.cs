@@ -81,8 +81,13 @@ namespace OGDCL
             }
         }
 
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
 
-       // private void PopulateComboBox()
+        }
+
+
+        // private void PopulateComboBox()
         //{
         //    comboBox1.Items.Add("Finance");
         //    comboBox1.Items.Add("Security");
