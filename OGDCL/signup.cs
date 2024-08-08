@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -21,6 +22,7 @@ namespace OGDCL
             string confirmPassword = textBox3.Text;
             string name = textBox4.Text;
             string empID = textBox5.Text;
+            string role = "Power User";
             //string modules = comboBox1.SelectedItem.ToString();
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(name))
@@ -38,7 +40,11 @@ namespace OGDCL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 // Use only the columns needed for sign-up
-                string query = "INSERT INTO Employee (empID,emp_name, username, passwd) VALUES (@EmpID, @EmpName, @Username, @Password)";
+                string query = @"INSERT INTO Employee (empID, emp_name, username, passwd, roleID) 
+                    VALUES (@EmpID, @EmpName, @Username, @Password, 
+                        (SELECT roleID FROM Role WHERE role_name = 'Power User')
+                    )";
+
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -46,7 +52,8 @@ namespace OGDCL
                     command.Parameters.AddWithValue("@EmpName", name);
                     command.Parameters.AddWithValue("@Username", username);
                     command.Parameters.AddWithValue("@Password", password);
-                   // command.Parameters.AddWithValue("@Modules", modules);
+                    command.Parameters.AddWithValue("@role", role);
+                    //command.Parameters.AddWithValue("@Modules", modules);
 
                     try
                     {
