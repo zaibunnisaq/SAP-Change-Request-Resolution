@@ -93,10 +93,10 @@ namespace OGDCL
                             MessageBox.Show("Login successful!");
                             // Optionally, navigate to the main form or dashboard
                             this.Hide();
-                            //CR_form CR_form = new CR_form();
-                            //CR_form.Show();
-                            admin Admin = new admin();
-                            Admin.Show();
+                            CR_form CR_form = new CR_form();
+                            CR_form.Show();
+                            //admin Admin = new admin();
+                            //Admin.Show();
 
                         }
                         else

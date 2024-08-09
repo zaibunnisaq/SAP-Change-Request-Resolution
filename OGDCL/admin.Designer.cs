@@ -43,6 +43,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label3
@@ -175,8 +176,9 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Location = new System.Drawing.Point(12, 560);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(64, 57);
+            this.panel1.Size = new System.Drawing.Size(83, 57);
             this.panel1.TabIndex = 60;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // panel3
             // 
@@ -196,12 +198,25 @@
             this.panel2.Size = new System.Drawing.Size(150, 148);
             this.panel2.TabIndex = 5;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label7.Location = new System.Drawing.Point(101, 573);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 32);
+            this.label7.TabIndex = 71;
+            this.label7.Text = "Log out";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1086, 629);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
@@ -241,5 +256,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label7;
     }
 }
