@@ -228,5 +228,10 @@ namespace OGDCL
             admin Admin = new admin();
             Admin.Show();
         }
+
+        private void impactform_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

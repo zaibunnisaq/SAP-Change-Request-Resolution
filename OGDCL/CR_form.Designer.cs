@@ -44,8 +44,8 @@
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label3
@@ -217,15 +217,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::OGDCL.Properties.Resources.OGDCL_logo_svg;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Location = new System.Drawing.Point(968, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(151, 148);
-            this.panel1.TabIndex = 27;
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -235,6 +226,16 @@
             this.linkLabel1.TabIndex = 28;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "LogIn as PowerUser?";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::OGDCL.Properties.Resources.OGDCL_logo_svg;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(968, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(151, 148);
+            this.panel1.TabIndex = 27;
             // 
             // CR_form
             // 

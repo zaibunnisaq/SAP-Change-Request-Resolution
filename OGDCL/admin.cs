@@ -19,7 +19,8 @@ namespace OGDCL
 
         private void label8_Click(object sender, EventArgs e)
         {
-
+            impactform impactform = new impactform();
+            impactform.Show();
         }
 
         private void admin_Load(object sender, EventArgs e)
@@ -59,8 +60,14 @@ namespace OGDCL
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
-            impactform impactform = new impactform();
-            impactform.Show();
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            form_list listf = new form_list();
+            listf.Show();
+
         }
     }
 }

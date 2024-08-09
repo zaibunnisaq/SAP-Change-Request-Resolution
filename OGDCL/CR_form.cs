@@ -150,5 +150,11 @@ namespace OGDCL
         {
 
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 Form1 = new Form1();
+            Form1.Show();
+        }
     }
 }
