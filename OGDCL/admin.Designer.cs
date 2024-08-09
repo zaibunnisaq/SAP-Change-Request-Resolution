@@ -35,15 +35,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label3
@@ -125,90 +124,81 @@
             this.label6.TabIndex = 66;
             this.label6.Text = "Manage Profile";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label7.Location = new System.Drawing.Point(970, 170);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 25);
+            this.label7.TabIndex = 71;
+            this.label7.Text = "Log out";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // panel8
             // 
             this.panel8.BackgroundImage = global::OGDCL.Properties.Resources.delete;
             this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel8.Location = new System.Drawing.Point(774, 378);
+            this.panel8.Location = new System.Drawing.Point(759, 379);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(74, 80);
+            this.panel8.Size = new System.Drawing.Size(103, 93);
             this.panel8.TabIndex = 70;
             // 
             // panel7
             // 
             this.panel7.BackgroundImage = global::OGDCL.Properties.Resources.user_settings;
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel7.Location = new System.Drawing.Point(510, 378);
+            this.panel7.Location = new System.Drawing.Point(495, 379);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(74, 80);
+            this.panel7.Size = new System.Drawing.Size(102, 93);
             this.panel7.TabIndex = 69;
             // 
             // panel6
             // 
             this.panel6.BackgroundImage = global::OGDCL.Properties.Resources.loading_bar__1_;
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel6.Location = new System.Drawing.Point(242, 378);
+            this.panel6.Location = new System.Drawing.Point(225, 379);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(74, 80);
+            this.panel6.Size = new System.Drawing.Size(102, 93);
             this.panel6.TabIndex = 68;
             // 
             // panel5
             // 
             this.panel5.BackgroundImage = global::OGDCL.Properties.Resources.user__1_;
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel5.Location = new System.Drawing.Point(774, 196);
+            this.panel5.Location = new System.Drawing.Point(759, 196);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(74, 80);
+            this.panel5.Size = new System.Drawing.Size(103, 97);
             this.panel5.TabIndex = 67;
             // 
             // panel4
             // 
             this.panel4.BackgroundImage = global::OGDCL.Properties.Resources.add_user;
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel4.Location = new System.Drawing.Point(510, 196);
+            this.panel4.Location = new System.Drawing.Point(495, 196);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(74, 80);
+            this.panel4.Size = new System.Drawing.Size(102, 97);
             this.panel4.TabIndex = 64;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::OGDCL.Properties.Resources.left__5_;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(12, 560);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(83, 57);
-            this.panel1.TabIndex = 60;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // panel3
             // 
             this.panel3.BackgroundImage = global::OGDCL.Properties.Resources.notification_bell;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel3.Location = new System.Drawing.Point(242, 196);
+            this.panel3.Location = new System.Drawing.Point(225, 196);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(74, 80);
+            this.panel3.Size = new System.Drawing.Size(102, 97);
             this.panel3.TabIndex = 30;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // panel2
             // 
             this.panel2.BackgroundImage = global::OGDCL.Properties.Resources.OGDCL_logo1;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(933, 2);
+            this.panel2.Location = new System.Drawing.Point(933, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(150, 148);
             this.panel2.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label7.Location = new System.Drawing.Point(101, 573);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 32);
-            this.label7.TabIndex = 71;
-            this.label7.Text = "Log out";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // admin
             // 
@@ -227,11 +217,11 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "admin";
             this.Text = "admin";
             this.Load += new System.EventHandler(this.admin_Load);
@@ -245,7 +235,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;

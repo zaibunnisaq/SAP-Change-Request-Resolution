@@ -50,9 +50,9 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // richTextBox6
@@ -263,6 +263,18 @@
             this.label2.Text = "Tasks/Scope:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label3.Location = new System.Drawing.Point(396, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(298, 54);
+            this.label3.TabIndex = 82;
+            this.label3.Text = "Change Impact";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::OGDCL.Properties.Resources.left__5_;
@@ -281,21 +293,11 @@
             this.panel2.Size = new System.Drawing.Size(133, 126);
             this.panel2.TabIndex = 58;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label3.Location = new System.Drawing.Point(396, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(298, 54);
-            this.label3.TabIndex = 82;
-            this.label3.Text = "Change Impact";
-            // 
             // impactform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1114, 685);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.richTextBox6);
