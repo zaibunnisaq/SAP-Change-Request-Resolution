@@ -46,13 +46,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // panel2
-            // 
-            //this.panel2.Location = new System.Drawing.Point(842, 24);
-            //this.panel2.Name = "panel2";
-            //this.panel2.Size = new System.Drawing.Size(242, 239);
-            //this.panel2.TabIndex = 2;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -244,7 +237,6 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel2);
             this.Name = "CR_form";
             this.Text = "CR_form";
             this.Load += new System.EventHandler(this.CR_form_Load);

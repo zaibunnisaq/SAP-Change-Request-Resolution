@@ -56,5 +56,11 @@ namespace OGDCL
         {
 
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+            impactform impactform = new impactform();
+            impactform.Show();
+        }
     }
 }
