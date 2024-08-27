@@ -56,8 +56,8 @@ namespace OGDCL
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +72,7 @@ namespace OGDCL
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(775, 613);
+            this.maskedTextBox1.Location = new System.Drawing.Point(785, 608);
             this.maskedTextBox1.Mask = "00/00/0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 26);
@@ -100,7 +100,7 @@ namespace OGDCL
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Malgun Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(708, 613);
+            this.label13.Location = new System.Drawing.Point(718, 608);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 21);
             this.label13.TabIndex = 76;
@@ -122,7 +122,7 @@ namespace OGDCL
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Malgun Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(680, 548);
+            this.label11.Location = new System.Drawing.Point(987, 566);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(84, 21);
             this.label11.TabIndex = 74;
@@ -276,7 +276,7 @@ namespace OGDCL
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Malgun Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label3.Location = new System.Drawing.Point(318, 37);
+            this.label3.Location = new System.Drawing.Point(334, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(412, 54);
             this.label3.TabIndex = 82;
@@ -288,7 +288,7 @@ namespace OGDCL
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label8.Location = new System.Drawing.Point(401, 96);
+            this.label8.Location = new System.Drawing.Point(453, 91);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(148, 32);
             this.label8.TabIndex = 83;
@@ -299,9 +299,9 @@ namespace OGDCL
             this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(928, 644);
+            this.button1.Location = new System.Drawing.Point(961, 644);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 40);
+            this.button1.Size = new System.Drawing.Size(141, 40);
             this.button1.TabIndex = 84;
             this.button1.Text = "Send request";
             this.button1.UseVisualStyleBackColor = false;
@@ -309,32 +309,22 @@ namespace OGDCL
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(928, 550);
+            this.button2.Location = new System.Drawing.Point(961, 590);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 42);
+            this.button2.Size = new System.Drawing.Size(141, 42);
             this.button2.TabIndex = 86;
-            this.button2.Text = "upload signature";
+            this.button2.Text = "Upload";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(775, 528);
+            this.pictureBox1.Location = new System.Drawing.Point(961, 521);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(141, 64);
+            this.pictureBox1.Size = new System.Drawing.Size(141, 42);
             this.pictureBox1.TabIndex = 85;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::OGDCL.Properties.Resources.left__5_;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(12, 611);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(64, 57);
-            this.panel1.TabIndex = 59;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -345,12 +335,23 @@ namespace OGDCL
             this.panel2.Size = new System.Drawing.Size(133, 126);
             this.panel2.TabIndex = 58;
             // 
+            // button3
+            // 
+            this.button3.Image = global::OGDCL.Properties.Resources.left__5_;
+            this.button3.Location = new System.Drawing.Point(12, 608);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 71);
+            this.button3.TabIndex = 147;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // impactform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1114, 685);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
@@ -377,7 +378,6 @@ namespace OGDCL
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "impactform";
             this.Text = "impactform";
@@ -415,12 +415,12 @@ namespace OGDCL
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

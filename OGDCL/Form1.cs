@@ -1,70 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Reflection;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using System.Windows.Forms;
 
 namespace OGDCL
 {
     public partial class Form1 : Form
     {
+        private int loggedInEmployeeId;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
-
             string username = textBox1.Text;
             string password = textBox2.Text;
 
@@ -76,7 +27,7 @@ namespace OGDCL
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT COUNT(*) FROM Employee WHERE username = @Username AND passwd = @Password";
+                string query = "SELECT empID, roleID FROM Employee WHERE username = @Username AND passwd = @Password";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -86,22 +37,24 @@ namespace OGDCL
                     try
                     {
                         connection.Open();
-                        int userCount = (int)command.ExecuteScalar();
-
-                        if (userCount > 0)
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            MessageBox.Show("Login successful!");
-                            // Optionally, navigate to the main form or dashboard
-                            this.Hide();
-                            //CR_form CR_form = new CR_form();
-                            //CR_form.Show();
-                            admin Admin = new admin();
-                            Admin.Show();
+                            if (reader.Read())
+                            {
+                                int employeeId = Convert.ToInt32(reader["empID"]);
+                                int roleId = Convert.ToInt32(reader["roleID"]);
 
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid username or password.");
+                                MessageBox.Show("Login successful!");
+
+                                this.loggedInEmployeeId = employeeId;
+
+                                // Redirect based on role
+                                RedirectUser(roleId);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid username or password.");
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -110,15 +63,48 @@ namespace OGDCL
                     }
                 }
             }
+        }
 
+        private void RedirectUser(int roleId)
+        {
+            Form nextForm = null;
+
+            switch (roleId)
+            {
+                case 1: // Power User
+                    nextForm = new admin(loggedInEmployeeId);
+                    break;
+                case 2: // Manager ERP
+                    nextForm = new manager(loggedInEmployeeId);
+                    break;
+                case 3: // CIO
+                    nextForm = new CIO(loggedInEmployeeId);
+                    break;
+                case 4: // CFO
+                    nextForm = new CFO(loggedInEmployeeId);
+                    break;
+                default:
+                    MessageBox.Show("Unknown role. Cannot proceed.");
+                    return;
+            }
+
+            if (nextForm != null)
+            {
+                this.Hide();
+                nextForm.ShowDialog();
+                this.Close();
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             signup signupForm = new signup();
             signupForm.Show();
-            
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

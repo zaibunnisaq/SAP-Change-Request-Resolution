@@ -35,7 +35,6 @@ namespace OGDCL
                 comboBox1.SelectedIndex = 0;
             }
 
-           // comboBox1.SelectedIndex = 0; // This will select the first item by default
         }
 
 
@@ -49,7 +48,7 @@ namespace OGDCL
             string name = textBox4.Text;
             string empID = textBox5.Text; // Manually input empID
             string role = "Power User";
-            string selectedModule = comboBox1.SelectedItem.ToString();
+            string selectedModule = comboBox1.SelectedItem?.ToString();
 
             if (string.IsNullOrEmpty(empID) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(name))
             {
@@ -60,6 +59,12 @@ namespace OGDCL
             if (password != confirmPassword)
             {
                 MessageBox.Show("Passwords do not match.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(selectedModule))
+            {
+                MessageBox.Show("Please select a module.");
                 return;
             }
 
@@ -101,8 +106,10 @@ namespace OGDCL
                     transaction.Commit();
 
                     MessageBox.Show("Sign up successful!");
-                    admin Admin = new admin();
+                   int employeeid = Convert.ToInt32(moduleCommand.ExecuteScalar());
+                    admin Admin = new admin(employeeid); // Pass empID to the admin form
                     Admin.Show();
+                    this.Hide(); // Hide the signup form after successful signup
                 }
                 catch (Exception ex)
                 {

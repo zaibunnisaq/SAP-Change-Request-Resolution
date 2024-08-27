@@ -36,13 +36,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label3
@@ -67,7 +67,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label8.Location = new System.Drawing.Point(184, 296);
+            this.label8.Location = new System.Drawing.Point(172, 296);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(231, 32);
             this.label8.TabIndex = 26;
@@ -135,12 +135,71 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label7.Location = new System.Drawing.Point(970, 170);
+            this.label7.Location = new System.Drawing.Point(47, 577);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 25);
             this.label7.TabIndex = 71;
             this.label7.Text = "Log out";
             this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.BackgroundImage = global::OGDCL.Properties.Resources.delete;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button6.Location = new System.Drawing.Point(759, 375);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(99, 97);
+            this.button6.TabIndex = 77;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.BackgroundImage = global::OGDCL.Properties.Resources.user_settings;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button5.Location = new System.Drawing.Point(495, 375);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(99, 97);
+            this.button5.TabIndex = 76;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.BackgroundImage = global::OGDCL.Properties.Resources.loading_bar__1_;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button4.Location = new System.Drawing.Point(237, 375);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(99, 97);
+            this.button4.TabIndex = 75;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.BackgroundImage = global::OGDCL.Properties.Resources.user__1_;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.Location = new System.Drawing.Point(759, 196);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(99, 97);
+            this.button3.TabIndex = 74;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = global::OGDCL.Properties.Resources.add_user;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Location = new System.Drawing.Point(495, 196);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 97);
+            this.button2.TabIndex = 73;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -162,61 +221,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(150, 148);
             this.panel2.TabIndex = 5;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::OGDCL.Properties.Resources.add_user;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(495, 196);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 97);
-            this.button2.TabIndex = 73;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = global::OGDCL.Properties.Resources.user__1_;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Location = new System.Drawing.Point(759, 196);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(99, 97);
-            this.button3.TabIndex = 74;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.BackgroundImage = global::OGDCL.Properties.Resources.loading_bar__1_;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.Location = new System.Drawing.Point(237, 375);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(99, 97);
-            this.button4.TabIndex = 75;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.BackgroundImage = global::OGDCL.Properties.Resources.user_settings;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Location = new System.Drawing.Point(495, 375);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 97);
-            this.button5.TabIndex = 76;
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.BackgroundImage = global::OGDCL.Properties.Resources.delete;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Location = new System.Drawing.Point(759, 375);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(99, 97);
-            this.button6.TabIndex = 77;
-            this.button6.UseVisualStyleBackColor = false;
             // 
             // admin
             // 

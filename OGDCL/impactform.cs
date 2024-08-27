@@ -17,83 +17,60 @@ namespace OGDCL
 {
     public partial class impactform : Form
     {
-        public impactform()
+
+        private int crId;
+        private int loggedInEmployeeId;
+         int roleid = 1;
+
+        public impactform(int crId, int loggedInEmployeeId)
         {
             InitializeComponent();
+            this.crId = crId;
+            this.loggedInEmployeeId = loggedInEmployeeId;
+            LoadCRFormDetails();
         }
+        private void LoadCRFormDetails()
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+            string query = "SELECT * FROM CR_Form WHERE cr_id = @CrId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@CrId", crId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                //    textBox1.Text = reader["cr_name"].ToString();
+                //    textBox2.Text = ""; // Populate with relevant data, if available
+                //    richTextBox1.Text = reader["descrip"].ToString();
+                //    richTextBox2.Text = reader["duration"].ToString();
+                //    richTextBox3.Text = reader["risks"].ToString();
+                //    richTextBox4.Text = reader["alt_recomm"].ToString();
+                //    richTextBox5.Text = reader["impact"].ToString();
+                //    comboBox1.SelectedItem = reader["b_impact"].ToString();
+                //    comboBox2.SelectedItem = reader["resources"].ToString();
+                //    maskedTextBox1.Text = ""; // Populate with relevant data, if available
+                }
+            }
+        }
+
+
+        private void LoadComboBoxItems()
+        {
+            comboBox1.Items.AddRange(new string[] { "yes", "no" });
+            comboBox2.Items.AddRange(new string[] { "yes", "no" });
+        }
+
+
+    
 
         private void label3_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
-
-            string department = textBox2.Text;
-            string name = textBox1.Text;
-            string scope = richTextBox1.Text;
-            string duration = richTextBox2.Text;
-            string risks = richTextBox3.Text;
-            string recommendations = richTextBox4.Text;
-            string comments = richTextBox5.Text;
-            string businessImpact = comboBox1.SelectedItem.ToString();
-            string resources = comboBox2.SelectedItem.ToString();
-            string date = maskedTextBox1.Text;
-
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(scope) || string.IsNullOrEmpty(department) ||
-                string.IsNullOrEmpty(businessImpact) || string.IsNullOrEmpty(resources))
-            {
-                MessageBox.Show("Please fill in all required fields.");
-                return;
-            }
-
-            // Assuming you want to upload the signature image file, not create one from text
-            byte[] signatureBytes = GetSignatureImageBytes();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = @"
-                INSERT INTO CR_Form 
-                (cr_name, descrip, duration, risks, alt_recomm, comments, b_impact, resources, signature) 
-                VALUES 
-                (@Name, @Scope, @Duration, @Risks, @Recommendations, @Comments, @BusinessImpact, @Resources, @Signature)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Name", name);
-                    command.Parameters.AddWithValue("@Scope", scope);
-                    command.Parameters.AddWithValue("@Duration", duration);
-                    command.Parameters.AddWithValue("@Risks", risks);
-                    command.Parameters.AddWithValue("@Recommendations", recommendations);
-                    command.Parameters.AddWithValue("@Comments", comments);
-                    command.Parameters.AddWithValue("@BusinessImpact", businessImpact);
-                    command.Parameters.AddWithValue("@Resources", resources);
-                    command.Parameters.AddWithValue("@Signature", (object)signatureBytes ?? DBNull.Value);
-
-                    try
-                    {
-                        connection.Open();
-                        int result = command.ExecuteNonQuery();
-
-                        if (result > 0)
-                        {
-                            MessageBox.Show("Change request added successfully!");
-                            this.Hide();
-                            this.Show();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to add change request.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}");
-                    }
-                }
-            }
         }
 
         private byte[] GetSignatureImageBytes()
@@ -106,11 +83,106 @@ namespace OGDCL
                     return ms.ToArray();
                 }
             }
-            return null;
+            return new byte[0];
         }
 
-        private void SaveSignatureToDatabase(byte[] signatureBytes)
+        private void button1_Click(object sender, EventArgs e)
         {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+
+            // Retrieve form data from the controls
+            string department = textBox2.Text;
+            string employeeName = textBox1.Text;
+            string scope = richTextBox1.Text;
+            string duration = richTextBox2.Text;
+            string risks = richTextBox3.Text;
+            string recommendations = richTextBox4.Text;
+            string comments = richTextBox5.Text;
+            string businessImpact = comboBox1.SelectedItem?.ToString();
+            string resources = comboBox2.SelectedItem?.ToString();
+            string date = maskedTextBox1.Text;
+
+            // Validate required fields
+            if (string.IsNullOrEmpty(employeeName) || string.IsNullOrEmpty(scope) || string.IsNullOrEmpty(department) ||
+                string.IsNullOrEmpty(businessImpact) || string.IsNullOrEmpty(resources))
+            {
+                MessageBox.Show("Please fill in all required fields.");
+                return;
+            }
+
+            // Get signature image bytes if available
+            byte[] signatureBytes = GetSignatureImageBytes();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Update the existing CR_Form with new details
+                string updateCrFormQuery = @"
+            UPDATE CR_Form 
+            SET impact = @Impact, 
+                b_impact = @BusinessImpact, 
+                resources = @Resources, 
+                duration = @Duration, 
+                risks = @Risks, 
+                alt_recomm = @AltRecomm
+            WHERE cr_id = @CrId";
+
+                using (SqlCommand updateCommand = new SqlCommand(updateCrFormQuery, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@Impact", comments);
+                    updateCommand.Parameters.AddWithValue("@BusinessImpact", businessImpact);
+                    updateCommand.Parameters.AddWithValue("@Resources", resources);
+                    updateCommand.Parameters.AddWithValue("@Duration", duration);
+                    updateCommand.Parameters.AddWithValue("@Risks", risks);
+                    updateCommand.Parameters.AddWithValue("@AltRecomm", recommendations);
+                    updateCommand.Parameters.AddWithValue("@CrId", crId); // Use the existing crId
+
+                    updateCommand.ExecuteNonQuery();
+                }
+
+                // Insert into CRFormSignature (this assumes the signature is newly added)
+                string crFormSignatureQuery = @"
+            INSERT INTO CRFormSignature 
+            (employee_id, cr_form_id, signature, comments)
+            VALUES 
+            (@EmployeeId, @CrFormId, @Signature, @Comments);";
+
+                using (SqlCommand signatureCommand = new SqlCommand(crFormSignatureQuery, connection))
+                {
+                    signatureCommand.Parameters.AddWithValue("@EmployeeId", loggedInEmployeeId); // Use the logged-in employee ID
+                    signatureCommand.Parameters.AddWithValue("@CrFormId", crId); // Use the existing crId
+                    signatureCommand.Parameters.AddWithValue("@Signature", signatureBytes ?? (object)DBNull.Value);
+                    signatureCommand.Parameters.AddWithValue("@Comments", comments);
+
+                    try
+                    {
+                        int result = signatureCommand.ExecuteNonQuery();
+
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Details updated successfully!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to update details.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}");
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+        private void SaveSignatureToDatabase(byte[] signatureBytes)
+       {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -143,12 +215,14 @@ namespace OGDCL
                     }
                 }
             }
-        }
+         }
+    
+
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
+                {
 
-        }
+                }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -223,15 +297,18 @@ namespace OGDCL
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            admin Admin = new admin();
-            Admin.Show();
-        }
 
         private void impactform_Load(object sender, EventArgs e)
         {
 
+            LoadComboBoxItems();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            form_list listf = new form_list(loggedInEmployeeId,1);
+            listf.Show();
         }
     }
 }
+

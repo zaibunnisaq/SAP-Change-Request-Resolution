@@ -17,6 +17,8 @@ namespace OGDCL
 {
     public partial class CR_form : Form
     {
+
+        public int CRId { get; private set; }
         public CR_form()
         {
             InitializeComponent();
@@ -69,63 +71,63 @@ namespace OGDCL
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+
+            string CRname = textBox4.Text;
+            string modules_involved = textBox1.Text;
+            string CR_desc = richTextBox1.Text;
+            string CR_reason = richTextBox2.Text;
+            string impact = richTextBox3.Text;
+            string priority = checkBox1.Checked ? "Low" : (checkBox2.Checked ? "High" : null);
+
+            if (string.IsNullOrEmpty(CRname) || string.IsNullOrEmpty(modules_involved) || string.IsNullOrEmpty(CR_desc) || string.IsNullOrEmpty(CR_reason) || string.IsNullOrEmpty(impact))
             {
-                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
 
-                string CRname = textBox4.Text;
-                string modules_involved = textBox1.Text;
-                string CR_desc = richTextBox1.Text;
-                string CR_reason = richTextBox2.Text;
-                string impact = richTextBox3.Text;
-                string priority = checkBox1.Checked ? "High" : (checkBox2.Checked ? "Low" : null);
-
-                if (string.IsNullOrEmpty(CRname) || string.IsNullOrEmpty(modules_involved) || string.IsNullOrEmpty(CR_desc) || string.IsNullOrEmpty(CR_reason) || string.IsNullOrEmpty(impact))
-                {
-                    MessageBox.Show("Please fill in all fields.");
-                    return;
-                }
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string query = @"
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
                 INSERT INTO CR_Form (cr_name, modules, descrip, reason, priority_cr, impact) 
-                VALUES (@CRName, @Modules, @Description, @Reason, @Priority, @Impact)";
+                VALUES (@CRName, @Modules, @Description, @Reason, @Priority, @Impact);
+                SELECT CAST(scope_identity() AS int)"; 
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CRName", CRname);
+                    command.Parameters.AddWithValue("@Modules", modules_involved);
+                    command.Parameters.AddWithValue("@Description", CR_desc);
+                    command.Parameters.AddWithValue("@Reason", CR_reason);
+                    command.Parameters.AddWithValue("@Priority", priority);
+                    command.Parameters.AddWithValue("@Impact", impact);
+
+                    try
                     {
-                        command.Parameters.AddWithValue("@CRName", CRname);
-                        command.Parameters.AddWithValue("@Modules", modules_involved);
-                        command.Parameters.AddWithValue("@Description", CR_desc);
-                        command.Parameters.AddWithValue("@Reason", CR_reason);
-                        command.Parameters.AddWithValue("@Priority", priority);
-                        command.Parameters.AddWithValue("@Impact", impact);
+                        connection.Open();
+                        CRId = (int)command.ExecuteScalar(); // Retrieve and store the newly inserted CR_ID
 
-                        try
+                        if (CRId > 0)
                         {
-                            connection.Open();
-                            int result = command.ExecuteNonQuery();
+                            MessageBox.Show("Change request added successfully!");
 
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Change request added successfully!");
-                                this.Hide();
-                                this.Show();
-                                
-                            }
-                            else
-                            {
-                                MessageBox.Show("Failed to add change request.");
-                            }
+                            this.Hide();
+                            CR_form crf = new CR_form();
+                            crf.Show();
+
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}");
+                            MessageBox.Show("Failed to add change request.");
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}");
                     }
                 }
             }
         }
-
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
